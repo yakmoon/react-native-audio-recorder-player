@@ -114,7 +114,10 @@ export enum AVLinearPCMBitDepthKeyIOSType {
   'bit24' = 24,
   'bit32' = 32,
 }
-
+interface State {
+  isPlaying: boolean;
+  isPaused: boolean;
+}
 export interface AudioSet {
   AVSampleRateKeyIOS?: number;
   AVFormatIDKeyIOS?: AVEncodingType;
@@ -419,6 +422,15 @@ class AudioRecorderPlayer {
    */
   setSubscriptionDuration = async (sec: number): Promise<string> => {
     return RNAudioRecorderPlayer.setSubscriptionDuration(sec);
+  };
+
+  /**
+   * Set subscription duration. Default is 0.5.
+   * @param {number} sec subscription callback duration in seconds.
+   * @returns {Promise<string>}
+   */
+  getState = async (): Promise<State> => {
+    return {isPlaying: this._isPlaying, isPaused: this._hasPaused};
   };
 }
 

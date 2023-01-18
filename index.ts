@@ -118,6 +118,7 @@ interface State {
   isPlaying: boolean;
   isPaused: boolean;
 }
+
 export interface AudioSet {
   AVSampleRateKeyIOS?: number;
   AVFormatIDKeyIOS?: AVEncodingType;
@@ -425,11 +426,10 @@ class AudioRecorderPlayer {
   };
 
   /**
-   * Set subscription duration. Default is 0.5.
-   * @param {number} sec subscription callback duration in seconds.
-   * @returns {Promise<string>}
+   * Get state
+   * @returns {State}
    */
-  getState = async (): Promise<State> => {
+  getState = (): State => {
     return {isPlaying: this._isPlaying, isPaused: this._hasPaused};
   };
 }

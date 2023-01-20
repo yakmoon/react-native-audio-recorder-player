@@ -354,7 +354,7 @@ class RNAudioRecorderPlayer: RCTEventEmitter, AVAudioRecorderDelegate {
             try audioSession.setCategory(.playback, mode: .default, options: [AVAudioSession.CategoryOptions.defaultToSpeaker, AVAudioSession.CategoryOptions.allowBluetooth])
             try audioSession.setActive(true)
         } catch {
-            reject("RNAudioPlayerRecorder", "Failed to play", nil)
+            // reject("RNAudioPlayerRecorder", "Failed to play", nil)
         }
 
         setAudioFileURL(path: path)
